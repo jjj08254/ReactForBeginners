@@ -1,15 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class AddFishForm extends React.Component {
+  /* eslint-disable */
   nameRef = React.createRef();
-
   priceRef = React.createRef();
-
   statusRef = React.createRef();
-
   descRef = React.createRef();
-
   imageRef = React.createRef();
+  /* eslint-enable */
+
+  static propTypes = {
+    addFish: PropTypes.func,
+  };
 
   createFish = e => {
     // 1. stop the form from submitting

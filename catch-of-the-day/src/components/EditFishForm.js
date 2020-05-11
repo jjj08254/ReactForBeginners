@@ -1,12 +1,26 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class EditFishForm extends React.Component {
+  static propTypes = {
+    fish: PropTypes.shape({
+      image: PropTypes.string,
+      name: PropTypes.string,
+      desc: PropTypes.string,
+      status: PropTypes.string,
+      price: PropTypes.number,
+    }),
+    index: PropTypes.string,
+    updateFish: PropTypes.func,
+  };
+
   hangleChange = e => {
     // update that fish
     // 1. take a copy of the current fish
     const updatedFish = {
       ...this.props.fish,
-      [e.currentTarget.name]: e.currentTarget.value,
+      [e.currentTarget.name]:
+        parseFloat(e.currentTarget.value) || e.currentTarget.value,
     };
     this.props.updateFish(this.props.index, updatedFish);
   };
